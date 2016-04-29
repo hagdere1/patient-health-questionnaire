@@ -22,11 +22,18 @@ var App = React.createClass({
   increaseScore: function (points) {
     var score = this.state.score += points;
     this.setState({ score: score });
+    console.log(this.state.score);
+  },
+
+  decreaseScore: function (points) {
+    var score = this.state.score -= points;
+    this.setState({ score: score });
+    console.log(this.state.score);
   },
 
   render: function () {
     if (this.state.formSubmitted === false) {
-      return <Questionnaire submitForm={this.submitForm} increaseScore={this.increaseScore}/>;
+      return <Questionnaire submitForm={this.submitForm} increaseScore={this.increaseScore} decreaseScore={this.decreaseScore}/>;
     }
   }
 });
