@@ -4,11 +4,11 @@ var Contact = React.createClass({
   render: function () {
     return (
       <ul>
-        <li>Name</li>
-        <li>Clinic Name</li>
-        <li>Address</li>
-        <li>Phone Number</li>
-        <li>Email</li>
+        <li>{this.props.therapist["name"]}</li>
+        <li>{this.props.therapist["clinic"]}</li>
+        <li>{this.props.therapist["addrStreet"]}</li>
+        <li>{this.props.therapist["addrCity"]}</li>
+        <li>{this.props.therapist["phone"]}</li>
       </ul>
     );
   }
