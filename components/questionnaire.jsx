@@ -33,7 +33,9 @@ var Questionnaire = React.createClass({
       <div>
         <ul>
           {this.questions.map(function (question) {
-            return <Question question={question} increaseScore={this.props.increaseScore} decreaseScore={this.props.decreaseScore}/>;
+            return <Question question={question}
+                             increaseScore={this.props.increaseScore}
+                             decreaseScore={this.props.decreaseScore} />;
           }.bind(this))}
         </ul>
         <button onClick={this.submitForm}>Submit</button>

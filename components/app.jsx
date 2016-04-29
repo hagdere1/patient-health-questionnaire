@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Questionnaire = require('./questionnaire');
+var Diagnosis = require('./diagnosis');
 
 var App = React.createClass({
   getInitialState: function () {
@@ -11,8 +12,6 @@ var App = React.createClass({
 
   submitForm: function () {
     this.setState({ formSubmitted: true });
-    // alert("Submitted form!");
-    console.log(this.state.formSubmitted);
   },
 
   selectDoctor: function () {
@@ -22,18 +21,20 @@ var App = React.createClass({
   increaseScore: function (points) {
     var score = this.state.score += points;
     this.setState({ score: score });
-    console.log(this.state.score);
   },
 
   decreaseScore: function (points) {
     var score = this.state.score -= points;
     this.setState({ score: score });
-    console.log(this.state.score);
   },
 
   render: function () {
     if (this.state.formSubmitted === false) {
-      return <Questionnaire submitForm={this.submitForm} increaseScore={this.increaseScore} decreaseScore={this.decreaseScore}/>;
+      return <Questionnaire submitForm={this.submitForm}
+                            increaseScore={this.increaseScore}
+                            decreaseScore={this.decreaseScore} />;
+    } else {
+      return <Diagnosis score={this.state.score}/>;
     }
   }
 });
