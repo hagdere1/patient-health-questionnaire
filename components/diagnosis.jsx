@@ -46,6 +46,10 @@ var Diagnosis = React.createClass({
     return severity;
   },
 
+  selectTherapist: function (therapist) {
+    this.props.selectTherapist(therapist);
+  },
+
   contactTherapist: function (e) {
     e.preventDefault();
     this.props.contactTherapist();
@@ -53,8 +57,13 @@ var Diagnosis = React.createClass({
 
   render: function () {
     var therapists = this.therapists.map(function (therapist) {
-      return <li><Contact selectTherapist={this.props.selectTherapist}
-                          therapist={therapist}/></li>;
+      return (
+        <li>
+          <Contact selectTherapist={this.props.selectTherapist}
+                   therapist={therapist} />
+          <input type="radio" name="therapist" onClick={this.selectTherapist.bind(this, therapist)} />
+        </li>
+      );
     }.bind(this));
 
     var therapistInfo;
