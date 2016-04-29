@@ -53,9 +53,15 @@ var Diagnosis = React.createClass({
 
     var therapistInfo;
     if (this.props.score > 9) {
-      therapistInfo = <ul>{therapists}</ul>;
+      therapistInfo = (
+        <div>
+          <p>Please consider contacting one of the following therapists.</p>
+          <ul>{therapists}</ul>
+          <button>Submit</button>
+        </div>
+      );
     } else {
-      therapistInfo = <div></div>;
+      therapistInfo = <p>Thank you for taking the patient health questionnaire.</p>;
     }
 
     return (
@@ -64,7 +70,9 @@ var Diagnosis = React.createClass({
         <p>You scored {this.props.score}/27</p>
         <h2>Depression Severity: {this.getDiagnosis()}</h2>
 
-        {therapistInfo}
+        <form>
+          {therapistInfo}
+        </form>
       </div>
     );
   }

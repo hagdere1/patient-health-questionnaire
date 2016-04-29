@@ -22,8 +22,9 @@ var Questionnaire = React.createClass({
     return true;
   },
 
-  submitForm: function () {
+  submitForm: function (e) {
     if (this.validateForm()) {
+      e.preventDefault();
       this.props.submitForm();
     }
   },

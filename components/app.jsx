@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Questionnaire = require('./questionnaire');
 var Diagnosis = require('./diagnosis');
+var Confirmation = require('./confirmation');
 
 var App = React.createClass({
   getInitialState: function () {
@@ -36,7 +37,7 @@ var App = React.createClass({
     } else if (this.state.doctorSelected === false) {
       return <Diagnosis score={this.state.score}/>;
     } else {
-      return <div>Thank You.</div>
+      return <Confirmation />;
     }
   }
 });
