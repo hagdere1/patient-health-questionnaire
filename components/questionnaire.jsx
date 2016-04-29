@@ -2,7 +2,7 @@ var React = require('react');
 var Question = require('./question');
 
 var Questionnaire = React.createClass({
-  questions: ["Little interest or please in doing things?",
+  questions: ["Little interest or pleasure in doing things?",
               "Feeling down, depressed, or hopeless?",
               "Trouble falling or staying asleep, or sleeping too much?",
               "Feeling tired or having little energy?",
@@ -17,17 +17,27 @@ var Questionnaire = React.createClass({
               "Thoughts that you would be better off dead, or of hurting \
               yourself in some way?"],
 
-  getInitialState: function () {
-    return { score: 0 };
+  validateForm: function () {
+    // Make sure all questions answered
+    return true;
+  },
+
+  submitForm: function () {
+    if (this.validateForm()) {
+      this.props.submitForm();
+    }
   },
 
   render: function () {
     return (
-      <ul>
-        {this.questions.map(function (question) {
-          return <Question question={question} />;
-        })}
-      </ul>
+      <div>
+        <ul>
+          {this.questions.map(function (question) {
+            return <Question question={question} />;
+          })}
+        </ul>
+        <button onClick={this.submitForm}>Submit</button>
+      </div>
     );
   }
 });
