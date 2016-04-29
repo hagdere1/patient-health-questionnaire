@@ -31,6 +31,7 @@ var Questionnaire = React.createClass({
   render: function () {
     return (
       <div>
+        <h1>Patient Health Questionnaire (PHQ-9)</h1>
         <ul>
           {this.questions.map(function (question) {
             return <Question question={question}

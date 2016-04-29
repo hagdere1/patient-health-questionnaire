@@ -33,8 +33,10 @@ var App = React.createClass({
       return <Questionnaire submitForm={this.submitForm}
                             increaseScore={this.increaseScore}
                             decreaseScore={this.decreaseScore} />;
-    } else {
+    } else if (this.state.doctorSelected === false) {
       return <Diagnosis score={this.state.score}/>;
+    } else {
+      return <div>Thank You.</div>
     }
   }
 });
