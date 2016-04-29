@@ -7,7 +7,8 @@ var Confirmation = require('./confirmation');
 var App = React.createClass({
   getInitialState: function () {
     return { formSubmitted: false,
-             doctorSelected: false,
+             therapistContacted: false,
+             therapist: null,
              score: 0 };
   },
 
@@ -15,8 +16,14 @@ var App = React.createClass({
     this.setState({ formSubmitted: true });
   },
 
-  selectDoctor: function () {
-    this.setState({ doctorSelected: true });
+  contactTherapist: function (therapist) {
+    this.setState({ therapistContacted: true });
+    console.log(this.state.therapistContacted)
+  },
+
+  selectTherapist: function (therapist) {
+    this.setState({ therapist: therapist });
+    console.log(this.state.therapist);
   },
 
   increaseScore: function (points) {
@@ -34,10 +41,12 @@ var App = React.createClass({
       return <Questionnaire submitForm={this.submitForm}
                             increaseScore={this.increaseScore}
                             decreaseScore={this.decreaseScore} />;
-    } else if (this.state.doctorSelected === false) {
-      return <Diagnosis score={this.state.score}/>;
+    } else if (this.state.therapistContacted === false) {
+      return <Diagnosis score={this.state.score}
+                        contactTherapist={this.contactTherapist}
+                        selectTherapist={this.selectTherapist} />;
     } else {
-      return <Confirmation />;
+      return <Confirmation therapist={this.state.therapist} />;
     }
   }
 });

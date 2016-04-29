@@ -46,10 +46,16 @@ var Diagnosis = React.createClass({
     return severity;
   },
 
+  contactTherapist: function (e) {
+    e.preventDefault();
+    this.props.contactTherapist();
+  },
+
   render: function () {
     var therapists = this.therapists.map(function (therapist) {
-      return <li><Contact therapist={therapist}/></li>;
-    });
+      return <li><Contact selectTherapist={this.props.selectTherapist}
+                          therapist={therapist}/></li>;
+    }.bind(this));
 
     var therapistInfo;
     if (this.props.score > 9) {
@@ -57,7 +63,7 @@ var Diagnosis = React.createClass({
         <div>
           <p>Please consider contacting one of the following therapists.</p>
           <ul>{therapists}</ul>
-          <button>Submit</button>
+          <button onClick={this.contactTherapist}>Submit</button>
         </div>
       );
     } else {
