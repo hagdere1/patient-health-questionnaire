@@ -29,8 +29,9 @@ var Questionnaire = React.createClass({
         <p>Over the last two weeks, how often have you been bothered by
         any of the following problems?</p>
         <ul>
-          {this.questions.map(function (question) {
-            return <Question question={question}
+          {this.questions.map(function (question, idx) {
+            return <Question key={idx}
+                             question={question}
                              increaseScore={this.props.increaseScore}
                              decreaseScore={this.props.decreaseScore} />;
           }.bind(this))}

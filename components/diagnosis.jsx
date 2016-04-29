@@ -14,7 +14,7 @@ var Diagnosis = React.createClass({
                   "phone": "202-723-3976"
                 },
                 {
-                  "name": "Dr. Walter Reed",
+                  "name": "Dr. Mehmet Oz",
                   "clinic": "Hillside Community Health Center",
                   "addrStreet": "263 Woodland Drive",
                   "addrCity": "Hillside, Illinois 60162",
@@ -69,39 +69,47 @@ var Diagnosis = React.createClass({
     }
   },
 
-  render: function () {
-    var therapists = this.therapists.map(function (therapist) {
+  errorMessage: function () {
+    if (this.state.errorMsgDisplayed) {
+      return <p>Please select a therapist to contact.</p>;
+    } else {
+      return <p></p>;
+    }
+  },
+
+  mapTherapistsToContacts: function () {
+    var therapists = this.therapists.map(function (therapist, idx) {
       return (
         <li>
           <input type="radio" name="therapist"
                  onClick={this.selectTherapist.bind(this, therapist)} />
-          <Contact selectTherapist={this.props.selectTherapist}
+          <Contact key={idx}
+                   selectTherapist={this.props.selectTherapist}
                    therapist={therapist} />
         </li>
       );
     }.bind(this));
+    return therapists;
+  },
 
-    var errorMessage;
-    if (this.state.errorMsgDisplayed) {
-      errorMessage = <p>Please select a therapist to contact.</p>;
-    } else {
-      errorMessage = <p></p>;
-    }
-
+  renderContacts: function () {
     var therapistInfo;
     if (this.props.score > 9) {
       therapistInfo = (
         <div>
           <p>Please consider contacting one of the following therapists.</p>
-          { errorMessage }
-          <ul>{therapists}</ul>
+          { this.errorMessage() }
+          <ul>{this.mapTherapistsToContacts()}</ul>
           <button onClick={this.contactTherapist}>Submit</button>
         </div>
       );
     } else {
       therapistInfo = <p>Thank you for taking the patient health questionnaire.</p>;
     }
+    return therapistInfo;
+  },
 
+  render: function () {
     return (
       <div>
         <h2>Depression Severity: {this.getDiagnosis()}</h2>
@@ -109,7 +117,7 @@ var Diagnosis = React.createClass({
         <p>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate,
                                 15-19 moderately severe, 20-27 severe.</p>
         <form>
-          {therapistInfo}
+          {this.renderContacts()}
         </form>
       </div>
     );
