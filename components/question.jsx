@@ -36,16 +36,20 @@ var Question = React.createClass({
       <li>
         {this.props.question}
         <form>
-          <input type="radio" name="points" id="0" onClick={this.updateScore.bind(this, 0)} />
+          <input type="radio" name="points" id="0"
+                 onClick={this.updateScore.bind(this, 0)} defaultChecked />
           <label for="0">Not at all</label>
 
-          <input type="radio" name="points" id="1" onClick={this.updateScore.bind(this, 1)} />
+          <input type="radio" name="points" id="1"
+                 onClick={this.updateScore.bind(this, 1)} />
           <label for="1">Several days</label>
 
-          <input type="radio" name="points" id="2" onClick={this.updateScore.bind(this, 2)} />
+          <input type="radio" name="points" id="2"
+                 onClick={this.updateScore.bind(this, 2)} />
           <label for="2">More than half the days</label>
 
-          <input type="radio" name="points" id="3" onClick={this.updateScore.bind(this, 3)} />
+          <input type="radio" name="points" id="3"
+                 onClick={this.updateScore.bind(this, 3)} />
           <label for="3">Nearly every day</label>
         </form>
       </li>

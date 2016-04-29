@@ -29,6 +29,11 @@ var Diagnosis = React.createClass({
                 }
               ],
 
+  getInitialState: function () {
+    return { errorMsgDisplayed: false,
+             therapistSelected: false };
+  },
+
   getDiagnosis: function () {
     var score = this.props.score;
     var severity;
@@ -47,30 +52,48 @@ var Diagnosis = React.createClass({
   },
 
   selectTherapist: function (therapist) {
+    this.setState({ therapistSelected: true });
+    // Remove error message if user selects an option
+    if (this.state.errorMsgDisplayed) {
+      this.setState({ errorMsgDisplayed: false });
+    }
     this.props.selectTherapist(therapist);
   },
 
   contactTherapist: function (e) {
     e.preventDefault();
-    this.props.contactTherapist();
+    if (this.state.therapistSelected) {
+      this.props.contactTherapist();
+    } else {
+      this.setState({ errorMsgDisplayed: true });
+    }
   },
 
   render: function () {
     var therapists = this.therapists.map(function (therapist) {
       return (
         <li>
+          <input type="radio" name="therapist"
+                 onClick={this.selectTherapist.bind(this, therapist)} />
           <Contact selectTherapist={this.props.selectTherapist}
                    therapist={therapist} />
-          <input type="radio" name="therapist" onClick={this.selectTherapist.bind(this, therapist)} />
         </li>
       );
     }.bind(this));
+
+    var errorMessage;
+    if (this.state.errorMsgDisplayed) {
+      errorMessage = <p>Please select a therapist to contact.</p>;
+    } else {
+      errorMessage = <p></p>;
+    }
 
     var therapistInfo;
     if (this.props.score > 9) {
       therapistInfo = (
         <div>
           <p>Please consider contacting one of the following therapists.</p>
+          { errorMessage }
           <ul>{therapists}</ul>
           <button onClick={this.contactTherapist}>Submit</button>
         </div>
@@ -81,10 +104,10 @@ var Diagnosis = React.createClass({
 
     return (
       <div>
-        <p>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe.</p>
-        <p>You scored {this.props.score}/27</p>
         <h2>Depression Severity: {this.getDiagnosis()}</h2>
-
+        <p>You scored {this.props.score}/27</p>
+        <p>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate,
+                                15-19 moderately severe, 20-27 severe.</p>
         <form>
           {therapistInfo}
         </form>

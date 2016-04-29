@@ -18,12 +18,10 @@ var App = React.createClass({
 
   contactTherapist: function (therapist) {
     this.setState({ therapistContacted: true });
-    console.log(this.state.therapistContacted)
   },
 
   selectTherapist: function (therapist) {
     this.setState({ therapist: therapist });
-    console.log(this.state.therapist);
   },
 
   increaseScore: function (points) {

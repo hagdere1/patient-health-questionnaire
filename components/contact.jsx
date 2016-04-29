@@ -1,6 +1,9 @@
 var React = require('react');
 
 var Contact = React.createClass({
+  // Initially I had put radio buttons within each Contact component
+  // but upon refactoring moved them out to the Diagonosis component in
+  // order to make Contacts reusable in Diagnosis and Confirmation.
   render: function () {
     return (
       <div>
