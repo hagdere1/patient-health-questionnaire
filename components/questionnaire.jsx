@@ -26,6 +26,8 @@ var Questionnaire = React.createClass({
     return (
       <div>
         <h1>Patient Health Questionnaire (PHQ-9)</h1>
+        <p>Over the last two weeks, how often have you been bothered by
+        any of the following problems?</p>
         <ul>
           {this.questions.map(function (question) {
             return <Question question={question}
