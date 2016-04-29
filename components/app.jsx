@@ -1,10 +1,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Questionnaire = require('./questionnaire');
 
 var App = React.createClass({
   render: function () {
     return (
-      <div>Hello World!</div>
+      <Questionnaire />
     );
   }
 });
