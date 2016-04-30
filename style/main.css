@@ -1,1 +1,7 @@
-.margin-top-10 { margin-top: 1.0em; }
+button {
+  margin-top: 20px !important;
+}
+
+.answer {
+  margin-right: 10px !important;
+}

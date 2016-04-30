@@ -58,6 +58,7 @@ var Questionnaire = React.createClass({
           <ul className="list-unstyled">
             {this.questions.map(function (question, idx) {
               return <Question key={idx}
+                               className="question"
                                question={question}
                                increaseScore={this.props.increaseScore}
                                decreaseScore={this.props.decreaseScore}
