@@ -106,7 +106,7 @@ var Diagnosis = React.createClass({
         </div>
       );
     } else {
-      therapistInfo = <p>Thank you for taking the patient health questionnaire.</p>;
+      therapistInfo = <p>Thank you for taking the Patient Health Questionnaire.</p>;
     }
     return therapistInfo;
   },
