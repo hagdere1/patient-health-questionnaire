@@ -20634,7 +20634,8 @@
 	            "Nearly every day"
 	          )
 	        )
-	      )
+	      ),
+	      React.createElement("br", null)
 	    );
 	  }
 	});

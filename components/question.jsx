@@ -76,6 +76,8 @@ var Question = React.createClass({
             <label for="3">Nearly every day</label>
           </div>
         </form>
+
+        <br />
       </li>
     );
   }
