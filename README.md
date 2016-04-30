@@ -3,8 +3,8 @@
 ## Local Deployment
 
 To run this app on your local system, download this repository and run
-npm install. In order to modify the application, run webpack or webpack
---watch to recompile the modules in bundle.js.
+```npm install```. In order to modify the application, run ```webpack```
+or ```webpack --watch``` to recompile the modules in ```bundle.js```.
 
 ## Approach
 
