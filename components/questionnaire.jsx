@@ -54,8 +54,8 @@ var Questionnaire = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <div>
+      <div className="container">
+        <div className="span12">
           <h1>Patient Health Questionnaire (PHQ-9)</h1>
           <p>Over the last two weeks, how often have you been bothered by
           any of the following problems?</p>

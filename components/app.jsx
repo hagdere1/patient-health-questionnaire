@@ -36,7 +36,8 @@ var App = React.createClass({
 
   render: function () {
     if (this.state.formSubmitted === false) {
-      return <Questionnaire submitForm={this.submitForm}
+      return <Questionnaire className="page"
+                            submitForm={this.submitForm}
                             increaseScore={this.increaseScore}
                             decreaseScore={this.decreaseScore} />;
     } else if (this.state.therapistContacted === false) {

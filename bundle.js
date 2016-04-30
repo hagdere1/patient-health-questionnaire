@@ -84,7 +84,8 @@
 	
 	  render: function () {
 	    if (this.state.formSubmitted === false) {
-	      return React.createElement(Questionnaire, { submitForm: this.submitForm,
+	      return React.createElement(Questionnaire, { className: 'page',
+	        submitForm: this.submitForm,
 	        increaseScore: this.increaseScore,
 	        decreaseScore: this.decreaseScore });
 	    } else if (this.state.therapistContacted === false) {
@@ -20204,10 +20205,10 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'container' },
 	      React.createElement(
 	        'div',
-	        null,
+	        { className: 'span12' },
 	        React.createElement(
 	          'h1',
 	          null,
