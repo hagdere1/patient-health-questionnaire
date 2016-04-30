@@ -56,7 +56,7 @@ var Question = React.createClass({
           <div className="col-sm-12">
             <input type="radio" name="points" id="2" className="answer"
                    onClick={this.handleSelect.bind(this, 2)} />
-            <label for="2">More than half the days</label>
+            <label for="2">More than half the days in the week</label>
           </div>
 
           <div className="col-sm-12">
