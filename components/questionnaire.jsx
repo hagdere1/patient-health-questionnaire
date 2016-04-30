@@ -24,20 +24,22 @@ var Questionnaire = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <h1>Patient Health Questionnaire (PHQ-9)</h1>
-        <p>Over the last two weeks, how often have you been bothered by
-        any of the following problems?</p>
-        <ul className="list-unstyled">
-          {this.questions.map(function (question, idx) {
-            return <Question key={idx}
-                             question={question}
-                             increaseScore={this.props.increaseScore}
-                             decreaseScore={this.props.decreaseScore} />;
-          }.bind(this))}
-        </ul>
-        <button className="btn btn-primary col-sm-3"
-                onClick={this.submitForm}>Submit</button>
+      <div className="container">
+        <div className="span12">
+          <h1>Patient Health Questionnaire (PHQ-9)</h1>
+          <p>Over the last two weeks, how often have you been bothered by
+          any of the following problems?</p>
+          <ul className="list-unstyled">
+            {this.questions.map(function (question, idx) {
+              return <Question key={idx}
+                               question={question}
+                               increaseScore={this.props.increaseScore}
+                               decreaseScore={this.props.decreaseScore} />;
+            }.bind(this))}
+          </ul>
+          <button className="btn btn-primary"
+                  onClick={this.submitForm}>Submit</button>
+        </div>
       </div>
     );
   }

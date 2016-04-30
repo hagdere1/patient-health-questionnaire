@@ -48,7 +48,7 @@ var Diagnosis = React.createClass({
       } else {
         severity = "Severe";
       }
-    return <span>{severity}</span>;
+    return <mark>{severity}</mark>;
   },
 
   selectTherapist: function (therapist) {
@@ -71,7 +71,7 @@ var Diagnosis = React.createClass({
 
   errorMessage: function () {
     if (this.state.errorMsgDisplayed) {
-      return <p>Please select a therapist to contact.</p>;
+      return <p className="text-danger">Please select a therapist to contact.</p>;
     } else {
       return <p></p>;
     }
@@ -81,11 +81,11 @@ var Diagnosis = React.createClass({
     var therapists = this.therapists.map(function (therapist, idx) {
       return (
         <li>
+          <Contact key={idx}
+                     selectTherapist={this.props.selectTherapist}
+                     therapist={therapist} />
           <input type="radio" name="therapist"
                  onClick={this.selectTherapist.bind(this, therapist)} />
-          <Contact key={idx}
-                   selectTherapist={this.props.selectTherapist}
-                   therapist={therapist} />
         </li>
       );
     }.bind(this));
@@ -99,8 +99,8 @@ var Diagnosis = React.createClass({
         <div>
           <p>Please consider contacting one of the following therapists.</p>
           { this.errorMessage() }
-          <ul className="list-unstyled">{this.mapTherapistsToContacts()}</ul>
-          <button className="btn btn-primary col-sm-3"
+          <ul className="list-unstyled list-inline">{this.mapTherapistsToContacts()}</ul>
+          <button className="btn btn-primary"
                   onClick={this.contactTherapist}>Submit</button>
         </div>
       );
@@ -112,14 +112,16 @@ var Diagnosis = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <h2>Depression Severity: {this.getDiagnosis()}</h2>
-        <p>You scored: <span className="lead">{this.props.score}/27</span></p>
-        <p>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate,
-                                15-19 moderately severe, 20-27 severe.</p>
-        <form>
-          {this.renderContacts()}
-        </form>
+      <div className="container">
+        <div className="span12">
+          <h2>Depression Severity: {this.getDiagnosis()}</h2>
+          <p>You scored: <span className="lead">{this.props.score}/27</span></p>
+          <p className="text-muted">Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate,
+                                  15-19 moderately severe, 20-27 severe.</p>
+          <form>
+            {this.renderContacts()}
+          </form>
+        </div>
       </div>
     );
   }
