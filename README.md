@@ -38,10 +38,10 @@ submitted the questionnaire or contact form without completing it.
 
 To modify the views, click handlers were added on the radio inputs and
 submit buttons. They manipulate components' state by changing the users'
-scores as they answer questions, flagging whether or not the user has
-submitted forms, tracking therapist information when a contact is
-selected, and flagging if error messages are displayed for incomplete
-forms.
+scores as they answer questions, flagging whether the user has submitted
+forms and answered questions, tracking therapist information when a
+contact is selected, and toggling if error messages are displayed for
+incomplete forms.
 
 ### Styling
 

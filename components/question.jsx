@@ -2,12 +2,19 @@ var React = require('react');
 
 var Question = React.createClass({
   getInitialState: function () {
-    return { valueSelected: null };
+    return { valueSelected: null,
+             answered: false };
   },
 
   handleSelect: function (points) {
+    // Call this.props.answerQuestion only if the question has not been
+    // answered before so the max number of answered questions in
+    // Questionnaire component's state can be 9.
     this.updateScore(points);
-    this.props.answerQuestion();
+    if (this.state.answered === false) {
+      this.setState({ answered: true });
+      this.props.answerQuestion();
+    }
   },
 
   updateScore: function (points) {
@@ -37,6 +44,8 @@ var Question = React.createClass({
   },
 
   render: function () {
+    // onClick listeners on radio inputs capture corresponding values
+    // to update score in real-time.
     return (
       <li>
         {this.props.question}

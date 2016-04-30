@@ -94,6 +94,7 @@ var Diagnosis = React.createClass({
 
   renderContacts: function () {
     var therapistInfo;
+    // Only show therapist info for moderate depression or higher.
     if (this.props.score > 9) {
       therapistInfo = (
         <div>

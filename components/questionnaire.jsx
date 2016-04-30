@@ -2,6 +2,8 @@ var React = require('react');
 var Question = require('./question');
 
 var Questionnaire = React.createClass({
+  // If this project were more complex or had more questions, it would
+  // make sense to abstract the questions to another file and read in.
   questions: ["Little interest or pleasure in doing things?",
               "Feeling down, depressed, or hopeless?",
               "Trouble falling or staying asleep, or sleeping too much?",
@@ -24,6 +26,8 @@ var Questionnaire = React.createClass({
 
   submitForm: function (e) {
     e.preventDefault();
+    // Make sure form is completed before submitting, or display error.
+    // Allow form submission if all questions have been answered.
     if (this.state.questionsAnswered === 9) {
       this.props.submitForm();
     } else {
@@ -32,6 +36,7 @@ var Questionnaire = React.createClass({
   },
 
   answerQuestion: function () {
+    // Track number of answered questions, remove error if all 9 answered.
     var questionsAnswered = this.state.questionsAnswered += 1;
     this.setState({ questionsAnswered: questionsAnswered });
     if (this.state.questionsAnswered === 9 && this.state.errorMsgDisplayed) {
