@@ -5,6 +5,11 @@ var Question = React.createClass({
     return { valueSelected: null };
   },
 
+  handleSelect: function (points) {
+    this.updateScore(points);
+    this.props.answerQuestion();
+  },
+
   updateScore: function (points) {
     // At first I had an increaseScore function to add points to the
     // patient score. However, I realized that if the patient changes
@@ -37,19 +42,19 @@ var Question = React.createClass({
         {this.props.question}
         <form>
           <input type="radio" name="points" id="0"
-                 onClick={this.updateScore.bind(this, 0)} defaultChecked />
+                 onClick={this.handleSelect.bind(this, 0)} />
           <label for="0">Not at all</label>
 
           <input type="radio" name="points" id="1"
-                 onClick={this.updateScore.bind(this, 1)} />
+                 onClick={this.handleSelect.bind(this, 1)} />
           <label for="1">Several days</label>
 
           <input type="radio" name="points" id="2"
-                 onClick={this.updateScore.bind(this, 2)} />
+                 onClick={this.handleSelect.bind(this, 2)} />
           <label for="2">More than half the days</label>
 
           <input type="radio" name="points" id="3"
-                 onClick={this.updateScore.bind(this, 3)} />
+                 onClick={this.handleSelect.bind(this, 3)} />
           <label for="3">Nearly every day</label>
         </form>
       </li>

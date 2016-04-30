@@ -17,9 +17,34 @@ var Questionnaire = React.createClass({
               "Thoughts that you would be better off dead, or of hurting \
               yourself in some way?"],
 
+  getInitialState: function () {
+    return { errorMsgDisplayed: false,
+             questionsAnswered: 0 };
+  },
+
   submitForm: function (e) {
     e.preventDefault();
-    this.props.submitForm();
+    if (this.state.questionsAnswered === 9) {
+      this.props.submitForm();
+    } else {
+      this.setState({ errorMsgDisplayed: true });
+    }
+  },
+
+  answerQuestion: function () {
+    var questionsAnswered = this.state.questionsAnswered += 1;
+    this.setState({ questionsAnswered: questionsAnswered });
+    if (this.state.questionsAnswered === 9 && this.state.errorMsgDisplayed) {
+      this.setState({ errorMsgDisplayed: false });
+    }
+  },
+
+  errorMessage: function () {
+    if (this.state.errorMsgDisplayed) {
+      return <p className="text-danger">Please answer all the questions.</p>;
+    } else {
+      return <p></p>;
+    }
   },
 
   render: function () {
@@ -29,12 +54,14 @@ var Questionnaire = React.createClass({
           <h1>Patient Health Questionnaire (PHQ-9)</h1>
           <p>Over the last two weeks, how often have you been bothered by
           any of the following problems?</p>
+          {this.errorMessage()}
           <ul className="list-unstyled">
             {this.questions.map(function (question, idx) {
               return <Question key={idx}
                                question={question}
                                increaseScore={this.props.increaseScore}
-                               decreaseScore={this.props.decreaseScore} />;
+                               decreaseScore={this.props.decreaseScore}
+                               answerQuestion={this.answerQuestion} />;
             }.bind(this))}
           </ul>
           <button className="btn btn-primary"
