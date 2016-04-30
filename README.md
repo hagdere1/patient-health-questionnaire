@@ -1,8 +1,5 @@
 # Patient Health Questionnaire (PHQ-9)
 
-[Live]
-[Live]: <http://haikgregoryagdere.com/patient-health-questionnaire/>
-
 ## Local Deployment
 
 To run this app on your local system, download this repository and run
