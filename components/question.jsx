@@ -48,27 +48,29 @@ var Question = React.createClass({
     // to update score in real-time.
     return (
       <li>
-        {this.props.question}
+        <div className="row-fluid">
+          <div className="span12">{this.props.question}</div>
+        </div>
         <form>
-          <div className="col-sm-12">
+          <div className="span12">
             <input type="radio" name="points" id="0" className="answer"
                    onClick={this.handleSelect.bind(this, 0)} />
             <label for="0">Not at all</label>
           </div>
 
-          <div className="col-sm-12">
+          <div className="span12">
             <input type="radio" name="points" id="1" className="answer"
                    onClick={this.handleSelect.bind(this, 1)} />
             <label for="1">Several days</label>
           </div>
 
-          <div className="col-sm-12">
+          <div className="span12">
             <input type="radio" name="points" id="2" className="answer"
                    onClick={this.handleSelect.bind(this, 2)} />
             <label for="2">More than half the days in the week</label>
           </div>
 
-          <div className="col-sm-12">
+          <div className="span12">
             <input type="radio" name="points" id="3" className="answer"
                    onClick={this.handleSelect.bind(this, 3)} />
             <label for="3">Nearly every day</label>

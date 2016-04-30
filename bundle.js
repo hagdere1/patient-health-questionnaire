@@ -47,8 +47,8 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(33);
 	var Questionnaire = __webpack_require__(168);
-	var Diagnosis = __webpack_require__(170);
-	var Confirmation = __webpack_require__(172);
+	var Diagnosis = __webpack_require__(169);
+	var Confirmation = __webpack_require__(171);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -20150,7 +20150,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var Question = __webpack_require__(169);
+	var Question = __webpack_require__(172);
 	
 	var Questionnaire = React.createClass({
 	  displayName: 'Questionnaire',
@@ -20204,10 +20204,10 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'container' },
+	      null,
 	      React.createElement(
 	        'div',
-	        { className: 'span12' },
+	        null,
 	        React.createElement(
 	          'h1',
 	          null,
@@ -20249,119 +20249,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	
-	var Question = React.createClass({
-	  displayName: "Question",
-	
-	  getInitialState: function () {
-	    return { valueSelected: null,
-	      answered: false };
-	  },
-	
-	  handleSelect: function (points) {
-	    // Call this.props.answerQuestion only if the question has not been
-	    // answered before so the max number of answered questions in
-	    // Questionnaire component's state can be 9.
-	    this.updateScore(points);
-	    if (this.state.answered === false) {
-	      this.setState({ answered: true });
-	      this.props.answerQuestion();
-	    }
-	  },
-	
-	  updateScore: function (points) {
-	    // At first I had an increaseScore function to add points to the
-	    // patient score. However, I realized that if the patient changes
-	    // his or her answer, points will continue to be added to the score.
-	    // I solved this problem by keeping track of the chosen option's
-	    // points and adding or subtracting points if a new option's points
-	    // are higher or lower than that previous choice.
-	
-	    if (this.state.valueSelected === "null") {
-	      this.props.increaseScore(points);
-	    } else if (points > this.state.valueSelected) {
-	      this.increaseScore(points - this.state.valueSelected);
-	    } else if (points < this.state.valueSelected) {
-	      this.decreaseScore(this.state.valueSelected - points);
-	    }
-	    this.setState({ valueSelected: points });
-	  },
-	
-	  increaseScore: function (points) {
-	    this.props.increaseScore(points);
-	  },
-	
-	  decreaseScore: function (points) {
-	    this.props.decreaseScore(points);
-	  },
-	
-	  render: function () {
-	    // onClick listeners on radio inputs capture corresponding values
-	    // to update score in real-time.
-	    return React.createElement(
-	      "li",
-	      null,
-	      this.props.question,
-	      React.createElement(
-	        "form",
-	        null,
-	        React.createElement(
-	          "div",
-	          { className: "col-sm-12" },
-	          React.createElement("input", { type: "radio", name: "points", id: "0", className: "answer",
-	            onClick: this.handleSelect.bind(this, 0) }),
-	          React.createElement(
-	            "label",
-	            { "for": "0" },
-	            "Not at all"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "col-sm-12" },
-	          React.createElement("input", { type: "radio", name: "points", id: "1", className: "answer",
-	            onClick: this.handleSelect.bind(this, 1) }),
-	          React.createElement(
-	            "label",
-	            { "for": "1" },
-	            "Several days"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "col-sm-12" },
-	          React.createElement("input", { type: "radio", name: "points", id: "2", className: "answer",
-	            onClick: this.handleSelect.bind(this, 2) }),
-	          React.createElement(
-	            "label",
-	            { "for": "2" },
-	            "More than half the days in the week"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "col-sm-12" },
-	          React.createElement("input", { type: "radio", name: "points", id: "3", className: "answer",
-	            onClick: this.handleSelect.bind(this, 3) }),
-	          React.createElement(
-	            "label",
-	            { "for": "3" },
-	            "Nearly every day"
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = Question;
-
-/***/ },
-/* 170 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var Contact = __webpack_require__(171);
+	var Contact = __webpack_require__(170);
 	
 	var Diagnosis = React.createClass({
 	  displayName: 'Diagnosis',
@@ -20537,7 +20425,7 @@
 	module.exports = Diagnosis;
 
 /***/ },
-/* 171 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -20588,11 +20476,11 @@
 	module.exports = Contact;
 
 /***/ },
-/* 172 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var Contact = __webpack_require__(171);
+	var Contact = __webpack_require__(170);
 	
 	var Confirmation = React.createClass({
 	  displayName: 'Confirmation',
@@ -20631,6 +20519,126 @@
 	});
 	
 	module.exports = Confirmation;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Question = React.createClass({
+	  displayName: "Question",
+	
+	  getInitialState: function () {
+	    return { valueSelected: null,
+	      answered: false };
+	  },
+	
+	  handleSelect: function (points) {
+	    // Call this.props.answerQuestion only if the question has not been
+	    // answered before so the max number of answered questions in
+	    // Questionnaire component's state can be 9.
+	    this.updateScore(points);
+	    if (this.state.answered === false) {
+	      this.setState({ answered: true });
+	      this.props.answerQuestion();
+	    }
+	  },
+	
+	  updateScore: function (points) {
+	    // At first I had an increaseScore function to add points to the
+	    // patient score. However, I realized that if the patient changes
+	    // his or her answer, points will continue to be added to the score.
+	    // I solved this problem by keeping track of the chosen option's
+	    // points and adding or subtracting points if a new option's points
+	    // are higher or lower than that previous choice.
+	
+	    if (this.state.valueSelected === "null") {
+	      this.props.increaseScore(points);
+	    } else if (points > this.state.valueSelected) {
+	      this.increaseScore(points - this.state.valueSelected);
+	    } else if (points < this.state.valueSelected) {
+	      this.decreaseScore(this.state.valueSelected - points);
+	    }
+	    this.setState({ valueSelected: points });
+	  },
+	
+	  increaseScore: function (points) {
+	    this.props.increaseScore(points);
+	  },
+	
+	  decreaseScore: function (points) {
+	    this.props.decreaseScore(points);
+	  },
+	
+	  render: function () {
+	    // onClick listeners on radio inputs capture corresponding values
+	    // to update score in real-time.
+	    return React.createElement(
+	      "li",
+	      null,
+	      React.createElement(
+	        "div",
+	        { className: "row-fluid" },
+	        React.createElement(
+	          "div",
+	          { className: "span12" },
+	          this.props.question
+	        )
+	      ),
+	      React.createElement(
+	        "form",
+	        null,
+	        React.createElement(
+	          "div",
+	          { className: "span12" },
+	          React.createElement("input", { type: "radio", name: "points", id: "0", className: "answer",
+	            onClick: this.handleSelect.bind(this, 0) }),
+	          React.createElement(
+	            "label",
+	            { "for": "0" },
+	            "Not at all"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "span12" },
+	          React.createElement("input", { type: "radio", name: "points", id: "1", className: "answer",
+	            onClick: this.handleSelect.bind(this, 1) }),
+	          React.createElement(
+	            "label",
+	            { "for": "1" },
+	            "Several days"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "span12" },
+	          React.createElement("input", { type: "radio", name: "points", id: "2", className: "answer",
+	            onClick: this.handleSelect.bind(this, 2) }),
+	          React.createElement(
+	            "label",
+	            { "for": "2" },
+	            "More than half the days in the week"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "span12" },
+	          React.createElement("input", { type: "radio", name: "points", id: "3", className: "answer",
+	            onClick: this.handleSelect.bind(this, 3) }),
+	          React.createElement(
+	            "label",
+	            { "for": "3" },
+	            "Nearly every day"
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Question;
 
 /***/ }
 /******/ ]);
