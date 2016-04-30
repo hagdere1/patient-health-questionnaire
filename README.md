@@ -1,6 +1,7 @@
 # Patient Health Questionnaire (PHQ-9)
 
-![Live](http://haikgregoryagdere.com/patient-health-questionnaire/)
+[Live]
+[Live]: <http://haikgregoryagdere.com/patient-health-questionnaire/>
 
 ## Local Deployment
 
