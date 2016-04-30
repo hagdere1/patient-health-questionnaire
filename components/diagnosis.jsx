@@ -48,7 +48,7 @@ var Diagnosis = React.createClass({
       } else {
         severity = "Severe";
       }
-    return severity;
+    return <span>{severity}</span>;
   },
 
   selectTherapist: function (therapist) {
@@ -99,8 +99,9 @@ var Diagnosis = React.createClass({
         <div>
           <p>Please consider contacting one of the following therapists.</p>
           { this.errorMessage() }
-          <ul>{this.mapTherapistsToContacts()}</ul>
-          <button onClick={this.contactTherapist}>Submit</button>
+          <ul className="list-unstyled">{this.mapTherapistsToContacts()}</ul>
+          <button className="btn btn-primary col-sm-3"
+                  onClick={this.contactTherapist}>Submit</button>
         </div>
       );
     } else {
@@ -113,7 +114,7 @@ var Diagnosis = React.createClass({
     return (
       <div>
         <h2>Depression Severity: {this.getDiagnosis()}</h2>
-        <p>You scored {this.props.score}/27</p>
+        <p>You scored: <span className="lead">{this.props.score}/27</span></p>
         <p>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate,
                                 15-19 moderately severe, 20-27 severe.</p>
         <form>

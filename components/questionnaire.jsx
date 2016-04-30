@@ -28,7 +28,7 @@ var Questionnaire = React.createClass({
         <h1>Patient Health Questionnaire (PHQ-9)</h1>
         <p>Over the last two weeks, how often have you been bothered by
         any of the following problems?</p>
-        <ul>
+        <ul className="list-unstyled">
           {this.questions.map(function (question, idx) {
             return <Question key={idx}
                              question={question}
@@ -36,7 +36,8 @@ var Questionnaire = React.createClass({
                              decreaseScore={this.props.decreaseScore} />;
           }.bind(this))}
         </ul>
-        <button onClick={this.submitForm}>Submit</button>
+        <button className="btn btn-primary col-sm-3"
+                onClick={this.submitForm}>Submit</button>
       </div>
     );
   }

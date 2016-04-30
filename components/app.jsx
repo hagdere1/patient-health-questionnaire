@@ -36,15 +36,18 @@ var App = React.createClass({
 
   render: function () {
     if (this.state.formSubmitted === false) {
-      return <Questionnaire submitForm={this.submitForm}
+      return <Questionnaire className=""
+                            submitForm={this.submitForm}
                             increaseScore={this.increaseScore}
                             decreaseScore={this.decreaseScore} />;
     } else if (this.state.therapistContacted === false) {
-      return <Diagnosis score={this.state.score}
+      return <Diagnosis className=""
+                        score={this.state.score}
                         contactTherapist={this.contactTherapist}
                         selectTherapist={this.selectTherapist} />;
     } else {
-      return <Confirmation therapist={this.state.therapist} />;
+      return <Confirmation className=""
+                           therapist={this.state.therapist} />;
     }
   }
 });

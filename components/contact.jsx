@@ -7,7 +7,7 @@ var Contact = React.createClass({
   render: function () {
     return (
       <div>
-        <ul>
+        <ul className="list-unstyled">
           <li>{this.props.therapist["name"]}</li>
           <li>{this.props.therapist["clinic"]}</li>
           <li>{this.props.therapist["addrStreet"]}</li>
