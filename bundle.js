@@ -20201,6 +20201,9 @@
 	  },
 	
 	  render: function () {
+	    // Pass questions to Question components, as well as references to
+	    // functions which manipulate the score and mark if question is
+	    // answered.
 	    return React.createElement(
 	      'div',
 	      { className: 'container' },
@@ -20332,6 +20335,9 @@
 	  },
 	
 	  getContacts: function () {
+	    // Pass therapist info to each Contact component.
+	    // Add onClick listeners to radio buttons to store therapist info in
+	    // App's state.
 	    var therapists = this.therapists.map(function (therapist, idx) {
 	      return React.createElement(
 	        'li',
@@ -20570,8 +20576,8 @@
 	  },
 	
 	  render: function () {
-	    // onClick listeners on radio inputs capture corresponding values
-	    // to update score in real-time.
+	    // onClick listeners on radio inputs capture corresponding values to
+	    // update score in real-time.
 	    return React.createElement(
 	      "li",
 	      null,

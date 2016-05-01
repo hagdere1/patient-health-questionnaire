@@ -51,6 +51,9 @@ var Questionnaire = React.createClass({
   },
 
   render: function () {
+    // Pass questions to Question components, as well as references to
+    // functions which manipulate the score and mark if question is
+    // answered.
     return (
       <div className="container">
         <div className="span12">

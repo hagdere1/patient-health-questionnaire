@@ -44,8 +44,8 @@ var Question = React.createClass({
   },
 
   render: function () {
-    // onClick listeners on radio inputs capture corresponding values
-    // to update score in real-time.
+    // onClick listeners on radio inputs capture corresponding values to
+    // update score in real-time.
     return (
       <li>
         <div className="row-fluid">
