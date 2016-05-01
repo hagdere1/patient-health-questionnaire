@@ -47,7 +47,7 @@ var Diagnosis = React.createClass({
       } else {
         severity = "Severe";
       }
-    return <mark>{severity}</mark>;
+    return <span className="text-primary">{severity}</span>;
   },
 
   selectTherapist: function (therapist) {

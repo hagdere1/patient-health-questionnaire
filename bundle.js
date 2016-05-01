@@ -20298,8 +20298,8 @@
 	      severity = "Severe";
 	    }
 	    return React.createElement(
-	      'mark',
-	      null,
+	      'span',
+	      { className: 'text-primary' },
 	      severity
 	    );
 	  },
