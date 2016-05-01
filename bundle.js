@@ -20156,8 +20156,6 @@
 	var Questionnaire = React.createClass({
 	  displayName: 'Questionnaire',
 	
-	  // If this project were more complex or had more questions, it would
-	  // make sense to abstract the questions to another file and read in.
 	  questions: ["Little interest or pleasure in doing things?", "Feeling down, depressed, or hopeless?", "Trouble falling or staying asleep, or sleeping too much?", "Feeling tired or having little energy?", "Poor appetite or overeating?", "Feeling bad about yourself - or that you are a failure or \
 	              have let yourself or your family down?", "Trouble concentrating on things, such as reading the \
 	              newspaper or watching television?", "Moving or speaking so slowly that other people could have \
@@ -20255,9 +20253,8 @@
 	var Diagnosis = React.createClass({
 	  displayName: 'Diagnosis',
 	
-	  // Ideally, this physician info would be in a separate file, but for
-	  // the purposes of this exercise and simplicity's sake I've placed in
-	  // this component to be passed down to each Contact component.
+	  // If this application had a backend, the doctors would be stored in
+	  // a database.
 	  therapists: [{
 	    "name": "Dr. Joseph Lister",
 	    "clinic": "Capitol Community Health Center",
@@ -20334,7 +20331,7 @@
 	    }
 	  },
 	
-	  mapTherapistsToContacts: function () {
+	  getContacts: function () {
 	    var therapists = this.therapists.map(function (therapist, idx) {
 	      return React.createElement(
 	        'li',
@@ -20365,7 +20362,7 @@
 	        React.createElement(
 	          'ul',
 	          { className: 'list-unstyled list-inline' },
-	          this.mapTherapistsToContacts()
+	          this.getContacts()
 	        ),
 	        React.createElement(
 	          'button',

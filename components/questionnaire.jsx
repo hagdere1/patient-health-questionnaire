@@ -2,8 +2,6 @@ var React = require('react');
 var Question = require('./question');
 
 var Questionnaire = React.createClass({
-  // If this project were more complex or had more questions, it would
-  // make sense to abstract the questions to another file and read in.
   questions: ["Little interest or pleasure in doing things?",
               "Feeling down, depressed, or hopeless?",
               "Trouble falling or staying asleep, or sleeping too much?",

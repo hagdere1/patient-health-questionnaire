@@ -2,9 +2,8 @@ var React = require('react');
 var Contact = require('./contact');
 
 var Diagnosis = React.createClass({
-  // Ideally, this physician info would be in a separate file, but for
-  // the purposes of this exercise and simplicity's sake I've placed in
-  // this component to be passed down to each Contact component.
+  // If this application had a backend, the doctors would be stored in
+  // a database.
   therapists: [
                 {
                   "name": "Dr. Joseph Lister",
@@ -77,7 +76,7 @@ var Diagnosis = React.createClass({
     }
   },
 
-  mapTherapistsToContacts: function () {
+  getContacts: function () {
     var therapists = this.therapists.map(function (therapist, idx) {
       return (
         <li>
@@ -100,7 +99,7 @@ var Diagnosis = React.createClass({
         <div>
           <p>Please consider contacting one of the following therapists.</p>
           { this.errorMessage() }
-          <ul className="list-unstyled list-inline">{this.mapTherapistsToContacts()}</ul>
+          <ul className="list-unstyled list-inline">{this.getContacts()}</ul>
           <button className="btn btn-primary"
                   onClick={this.contactTherapist}>Submit</button>
         </div>
