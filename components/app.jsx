@@ -16,7 +16,7 @@ var App = React.createClass({
     this.setState({ formSubmitted: true });
   },
 
-  contactTherapist: function (therapist) {
+  contactTherapist: function () {
     this.setState({ therapistContacted: true });
   },
 
@@ -25,16 +25,15 @@ var App = React.createClass({
   },
 
   increaseScore: function (points) {
-    var score = this.state.score += points;
-    this.setState({ score: score });
+    this.setState({ score: this.state.score + points });
   },
 
   decreaseScore: function (points) {
-    var score = this.state.score -= points;
-    this.setState({ score: score });
+    this.setState({ score: this.state.score - points });
   },
 
   render: function () {
+    // Send major components props to manipulate App's state
     if (this.state.formSubmitted === false) {
       return <Questionnaire className="page"
                             submitForm={this.submitForm}
