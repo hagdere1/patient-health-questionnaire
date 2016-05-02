@@ -9,7 +9,7 @@ var Confirmation = React.createClass({
           <h3>Confirmation</h3>
           <p className="text-success">Your information has been sent to:</p>
           <Contact therapist={this.props.therapist} />
-          <p>Thank you for taking the patient health questionnaire.</p>
+          <p>Thank you for taking the Patient Health Questionnaire.</p>
           <p>We will contact you shortly.</p>
         </div>
       </div>

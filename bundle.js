@@ -20507,7 +20507,7 @@
 	        React.createElement(
 	          'p',
 	          null,
-	          'Thank you for taking the patient health questionnaire.'
+	          'Thank you for taking the Patient Health Questionnaire.'
 	        ),
 	        React.createElement(
 	          'p',
