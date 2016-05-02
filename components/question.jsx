@@ -24,7 +24,6 @@ var Question = React.createClass({
     // I solved this problem by keeping track of the chosen option's
     // points and adding or subtracting points if a new option's points
     // are higher or lower than that previous choice.
-
     if (this.state.valueSelected === "null") {
       this.props.increaseScore(points);
     } else if (points > this.state.valueSelected) {

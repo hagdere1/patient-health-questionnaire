@@ -84,8 +84,8 @@ var Diagnosis = React.createClass({
       return (
         <li>
           <Contact key={idx}
-                     selectTherapist={this.props.selectTherapist}
-                     therapist={therapist} />
+                   selectTherapist={this.props.selectTherapist}
+                   therapist={therapist} />
           <input type="radio" name="therapist"
                  onClick={this.selectTherapist.bind(this, therapist)} />
         </li>

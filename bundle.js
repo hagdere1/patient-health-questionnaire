@@ -83,8 +83,7 @@
 	  render: function () {
 	    // Send major components props to manipulate App's state
 	    if (this.state.formSubmitted === false) {
-	      return React.createElement(Questionnaire, { className: 'page',
-	        submitForm: this.submitForm,
+	      return React.createElement(Questionnaire, { submitForm: this.submitForm,
 	        increaseScore: this.increaseScore,
 	        decreaseScore: this.decreaseScore });
 	    } else if (this.state.therapistContacted === false) {
@@ -20180,8 +20179,7 @@
 	
 	  answerQuestion: function () {
 	    // Track number of answered questions, remove error if all 9 answered.
-	    var questionsAnswered = this.state.questionsAnswered += 1;
-	    this.setState({ questionsAnswered: questionsAnswered });
+	    this.setState({ questionsAnswered: this.state.questionsAnswered + 1 });
 	    if (this.state.questionsAnswered === 9 && this.state.errorMsgDisplayed) {
 	      this.setState({ errorMsgDisplayed: false });
 	    }
@@ -20555,7 +20553,6 @@
 	    // I solved this problem by keeping track of the chosen option's
 	    // points and adding or subtracting points if a new option's points
 	    // are higher or lower than that previous choice.
-	
 	    if (this.state.valueSelected === "null") {
 	      this.props.increaseScore(points);
 	    } else if (points > this.state.valueSelected) {

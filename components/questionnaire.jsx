@@ -35,8 +35,7 @@ var Questionnaire = React.createClass({
 
   answerQuestion: function () {
     // Track number of answered questions, remove error if all 9 answered.
-    var questionsAnswered = this.state.questionsAnswered += 1;
-    this.setState({ questionsAnswered: questionsAnswered });
+    this.setState({ questionsAnswered: this.state.questionsAnswered + 1 });
     if (this.state.questionsAnswered === 9 && this.state.errorMsgDisplayed) {
       this.setState({ errorMsgDisplayed: false });
     }
